@@ -1,7 +1,7 @@
 CREATE TABLE data_2022_oct (
     event_time TIMESTAMP WITH TIME ZONE,
     event_type TEXT,
-    product_id BIGINT,
+    product_id INTEGER,
     price NUMERIC,
     user_id BIGINT,
     user_session UUID
