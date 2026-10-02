@@ -10,8 +10,8 @@ $(VENV):
 install: $(VENV)
 	$(PIP) install -r requirements.txt
 
-run: install
-	$(PYTHON) remove_duplicates.py
+run: $(VENV)
+	$(PYTHON) pie.py
 
 clean:
 	rm -rf __pycache__
@@ -19,8 +19,6 @@ clean:
 fclean: clean
 	rm -rf $(VENV)
 
-
-  
 re: fclean all
 
 .PHONY: all install run clean fclean re

@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+subject/
+*.csv
+data_2023_feb.csv
