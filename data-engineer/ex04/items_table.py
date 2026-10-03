@@ -27,7 +27,7 @@ def create_and_load_items():
     table_exists = cursor.fetchone()[0]
 
     if table_exists:
-        cursor.execute("SELECT COUNT(*) FROM items")
+        cursor.execute("SELECT COUNT(*) FROM item")
         row_count = cursor.fetchone()[0]
 
         print("Table items already exists")
@@ -37,7 +37,7 @@ def create_and_load_items():
         with open("items_table.sql", "r") as sql_file:
             cursor.execute(sql_file.read())
 
-        with open("subject/items/item.csv", "r") as csv_file:
+        with open("subject/item/item.csv", "r") as csv_file:
             cursor.copy_expert(
                 "COPY items FROM STDIN WITH (FORMAT csv, HEADER true, NULL '')",
                 csv_file
@@ -68,6 +68,7 @@ def main():
 if __name__ == "__main__":
     main()
 
-#  psql -U csalamit -d piscineds -h localhost -W -c "\d items"
+
+# psql -U csalamit -d piscineds -h localhost -W -c "\d items"
 
 # psql -U csalamit -d piscineds -h localhost -W -c "SELECT COUNT(*) FROM items;"

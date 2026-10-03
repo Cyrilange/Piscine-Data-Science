@@ -44,6 +44,19 @@ def get_connection():
     )
 
 
+
+    customer_dir = "customer"
+
+    if not os.path.isdir(customer_dir):
+        customer_dir = "subject/customer"
+
+    if not os.path.isdir(customer_dir):
+        raise FileNotFoundError(
+            "Neither 'customer' nor 'subject/customer' exists."
+        )
+
+
+
 def create_and_load():
     connection = get_connection()
 
