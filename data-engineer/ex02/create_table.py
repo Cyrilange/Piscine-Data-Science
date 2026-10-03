@@ -1,8 +1,9 @@
 import psycopg2
 import csv
+customer_dir = "../subject/customer/data_2022_oct.csv"
 
 def analyze_csv():
-    with open("customer/data_2022_oct.csv","r", encoding="utf-8") as csv_file:
+    with open(customer_dir ,"r", encoding="utf-8") as csv_file:
         reader = csv.DictReader(csv_file)
         rows = list(reader)
 
@@ -45,18 +46,6 @@ def get_connection():
 
 
 
-    customer_dir = "customer"
-
-    if not os.path.isdir(customer_dir):
-        customer_dir = "subject/customer"
-
-    if not os.path.isdir(customer_dir):
-        raise FileNotFoundError(
-            "Neither 'customer' nor 'subject/customer' exists."
-        )
-
-
-
 def create_and_load():
     connection = get_connection()
 
@@ -81,7 +70,7 @@ def create_and_load():
                 cursor.execute(sql_file.read())
 
             with open(
-                "customer/data_2022_oct.csv",
+                customer_dir,
                 "r",
                 encoding="utf-8"
             ) as csv_file:

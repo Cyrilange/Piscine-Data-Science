@@ -14,15 +14,9 @@ def main():
 
     cursor = connection.cursor()
 
-    customer_dir = "customer"
+    customer_dir = "../subject/customer"
 
-    if not os.path.isdir(customer_dir):
-        customer_dir = "subject/customer"
 
-    if not os.path.isdir(customer_dir):
-        raise FileNotFoundError(
-            "Neither 'customer' nor 'subject/customer' exists."
-        )
 
     csv_files = sorted(
         filename
