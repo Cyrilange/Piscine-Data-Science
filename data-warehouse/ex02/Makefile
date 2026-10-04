@@ -13,6 +13,12 @@ install: $(VENV)
 run: install
 	$(PYTHON) remove_duplicates.py
 
+install-psql:
+	mkdir -p $(HOME)/bin
+	printf '#!/bin/sh\nexec docker exec -it piscineds_postgres psql "$$@"\n' > $(HOME)/bin/psql
+	chmod +x $(HOME)/bin/psql
+
+
 clean:
 	rm -rf __pycache__
 

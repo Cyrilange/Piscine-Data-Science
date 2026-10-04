@@ -5,3 +5,4 @@ __pycache__/
 subject/
 *.csv
 data_2023_feb.csv
+*.png

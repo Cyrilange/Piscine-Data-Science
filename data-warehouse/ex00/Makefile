@@ -16,6 +16,12 @@ ps:
 clean:
 	docker compose down
 
+install-psql:
+	mkdir -p $(HOME)/bin
+	printf '#!/bin/sh\nexec docker exec -it piscineds_postgres psql "$$@"\n' > $(HOME)/bin/psql
+	chmod +x $(HOME)/bin/psql
+
+
 fclean:
 	docker compose down -v
 

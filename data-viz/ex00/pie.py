@@ -29,6 +29,7 @@ def main():
     print("TOTAL =", df["count"].sum())
     print("PURCHASE =", df.loc[df["event_type"] == "purchase", "count"].iloc[0])
     plt.pie(df["count"], labels=df["event_type"], autopct="%1.1f%%")
+    plt.savefig("pie.png")
     plt.show()
 
     connection.close()

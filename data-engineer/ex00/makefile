@@ -44,3 +44,16 @@ env:
 	@echo "$(ENV_FILE) created."
 
 reset: fclean up
+
+
+# Champ	Valeur
+# Name	piscineds
+
+# Dans Connection :
+
+# Champ	Valeur
+# Host name/address	piscineds_postgres
+# Port	5432
+# Maintenance database	piscineds
+# Username	csalamit
+# Password	mysecretpassword

@@ -31,12 +31,12 @@ def load_february(connection):
             event_type TEXT,
             product_id BIGINT,
             price NUMERIC,
-            user_id BIGINT,
+            user_id INT,
             user_session UUID
         )
     """)
 
-    with open("data_2023_feb.csv", "r", newline="") as file:
+    with open("../data_2023_feb.csv", "r", newline="") as file:
         reader = csv.reader(file)
         next(reader)
 
@@ -78,20 +78,8 @@ def create_customers(connection):
 
     cursor = connection.cursor()
 
-    cursor.execute("""
-        DROP TABLE IF EXISTS customers;
-
-        CREATE TABLE customers AS
-        SELECT * FROM data_2022_oct
-        UNION ALL
-        SELECT * FROM data_2022_nov
-        UNION ALL
-        SELECT * FROM data_2022_dec
-        UNION ALL
-        SELECT * FROM data_2023_jan
-        UNION ALL
-        SELECT * FROM data_2023_feb;
-    """)
+    with open("customers_table.sql", "r", encoding="utf-8") as sql_file:
+        cursor.execute(sql_file.read())
 
     connection.commit()
 
