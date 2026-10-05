@@ -134,7 +134,6 @@ def check_result(connection, customers_count_before):
     for column in columns:
         print(f"  - {column}")
 
-    # 3. Vérifier les correspondances avec items
     cursor.execute("""
         SELECT COUNT(*)
         FROM customers c

@@ -1,11 +1,25 @@
-DELETE FROM customers c1
-WHERE EXISTS (
-    SELECT 1
-    FROM customers c2
-    WHERE c2.event_type = c1.event_type
-      AND c2.product_id = c1.product_id
-      AND c2.user_id = c1.user_id
-      AND c2.user_session = c1.user_session
-      AND c2.event_time < c1.event_time
-      AND c1.event_time - c2.event_time <= INTERVAL '1 second'
-);
+
+DELETE FROM customers AS c
+USING (
+    SELECT s.ctid AS rid
+    FROM (
+        SELECT
+            ctid,
+            event_time,
+            LAG(event_time) OVER (
+                PARTITION BY
+                    user_id,
+                    user_session,
+                    event_type,
+                    product_id,
+                    price
+                ORDER BY
+                    event_time,
+                    ctid
+            ) AS prev_time
+        FROM customers
+    ) AS s
+    WHERE s.prev_time IS NOT NULL
+      AND s.event_time - s.prev_time <= INTERVAL '1 second'
+) AS d
+WHERE c.ctid = d.rid;
