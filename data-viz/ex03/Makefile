@@ -16,7 +16,7 @@ install: $(VENV)
 	$(PIP) install -r requirements.txt
 
 run: $(VENV) env
-	$(PYTHON) pie.py
+	$(PYTHON) Building.py
 
 install-psql:
 	mkdir -p $(HOME)/bin
@@ -30,8 +30,6 @@ env:
 	@printf 'POSTGRES_DB=%s\n' "$(POSTGRES_DB)" >> $(ENV_FILE)
 	@echo "$(ENV_FILE) created."
 
-fev-del:
-	psql -h localhost -U $(POSTGRES_USER) -d $(POSTGRES_DB) -c "DELETE FROM customers WHERE event_time >= '2023-02-01' AND event_time < '2023-03-01';"
 clean:
 	rm -rf __pycache__
 
