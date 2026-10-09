@@ -17,7 +17,11 @@ def correlation():
     print("| Feature        | Correlation| Interpretation           |")
     print("+----------------+------------+--------------------------+")
     for feature, value in corr.items():
-        print(f"| {feature:<14} | {value:>10.6f} | {traduction(value):<24} |")
+            if feature == "knight":
+                interpretation = "Target"
+            else:
+                interpretation = traduction(value)
+            print(f"| {feature:<14} | {value:>10.6f} | {interpretation:<24} |")
 
     print("+----------------+------------+--------------------------+")
 
