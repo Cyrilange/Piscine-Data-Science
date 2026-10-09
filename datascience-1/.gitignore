@@ -4,5 +4,4 @@ __pycache__/
 .env
 subject/
 *.csv
-data_2023_feb.csv
-.env
+*.png

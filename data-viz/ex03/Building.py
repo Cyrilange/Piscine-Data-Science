@@ -22,6 +22,10 @@ def dbconnect():
 
 
 def readdb():
+    """
+    Read purchase data from the customers table.
+    Returns the data as a Pandas DataFrame.
+    """
     connection = dbconnect()
 
     df = pd.read_sql("""

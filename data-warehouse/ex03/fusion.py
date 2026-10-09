@@ -1,5 +1,8 @@
 import psycopg2
+import os  
+from dotenv import load_dotenv
 
+load_dotenv() 
 
 def connect_db():
     print("[1/5] Connecting to PostgreSQL...")
@@ -7,9 +10,9 @@ def connect_db():
     connection = psycopg2.connect(
         host="localhost",
         port=5432,
-        user="csalamit",
-        password="mysecretpassword",
-        dbname="piscineds"
+        user=os.getenv("POSTGRES_USER"),
+        password=os.getenv("POSTGRES_PASSWORD"),
+        dbname=os.getenv("POSTGRES_DB")
     )
 
     print("[OK] Connected to database 'piscineds'.")

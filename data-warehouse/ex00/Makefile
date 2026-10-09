@@ -1,3 +1,5 @@
+
+
 all:
 	docker compose up -d
 
@@ -27,4 +29,4 @@ fclean:
 
 re: fclean all
 
-.PHONY: all up down logs ps clean fclean re
+.PHONY: all up down logs ps clean fclean re install-psql
