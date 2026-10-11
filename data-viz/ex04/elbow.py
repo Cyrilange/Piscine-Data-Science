@@ -90,15 +90,18 @@ def graph_rfm(rfm):
 
 
 def main():
-    df = readdb()
+    try:
+        df = readdb()
 
-    rfm = find_rfm(df)
-    rfm.index = rfm.index.astype(int)
-    rfm = rfm.sort_index()
+        rfm = find_rfm(df)
+        rfm.index = rfm.index.astype(int)
+        rfm = rfm.sort_index()
 
-    print(rfm.iloc[:10])
+        print(rfm.iloc[:10])
 
-    graph_rfm(rfm)
+        graph_rfm(rfm)
+    except:
+        print("please create a db!!")
 
 
 if __name__ == "__main__":

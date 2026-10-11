@@ -119,17 +119,20 @@ def create_daily_average_spend_chart(df):
     plt.show()
 
 def main():
-    df = readdb()
+    try:
+        df = readdb()
 
-    print("Connected to PostgreSQL!")
-    print("MIN DATE =", df["event_time"].min())
-    print("MAX DATE =", df["event_time"].max())
+        print("Connected to PostgreSQL!")
+        print("MIN DATE =", df["event_time"].min())
+        print("MAX DATE =", df["event_time"].max())
 
-    df = prepare_data(df)
+        df = prepare_data(df)
 
-    create_daily_customers_chart(df)
-    create_monthly_sales_chart(df)
-    create_daily_average_spend_chart(df)
+        create_daily_customers_chart(df)
+        create_monthly_sales_chart(df)
+        create_daily_average_spend_chart(df)
+    except:
+        print("You should first create the db,go back to data engineer module and create the db!!")
 
 
 if __name__ == "__main__":

@@ -82,9 +82,12 @@ def prepare_data_per_user(df):
     plt.show()
 
 def main():
-    df = readdb()
-    prepare_data(df)
-    prepare_data_per_user(df)
+    try:
+        df = readdb()
+        prepare_data(df)
+        prepare_data_per_user(df)
+    except:
+        print("First you need a db!!!!!!!!!!!!")
 
 
 if __name__ == "__main__":

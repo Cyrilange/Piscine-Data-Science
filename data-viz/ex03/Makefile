@@ -7,7 +7,8 @@ PYTHON = $(VENV)/bin/python
 PIP = $(VENV)/bin/pip
 ENV_FILE = .env
 
-all: install
+all: install env
+	@echo "Setup complete! You can now run: make run"
 
 $(VENV):
 	python3 -m venv $(VENV)
@@ -15,7 +16,7 @@ $(VENV):
 install: $(VENV)
 	$(PIP) install -r requirements.txt
 
-run: $(VENV) env
+run: $(VENV)
 	$(PYTHON) Building.py
 
 install-psql:
@@ -35,6 +36,7 @@ clean:
 
 fclean: clean
 	rm -rf $(VENV)
+	rm -rf .env
 
 re: fclean all
 

@@ -34,18 +34,25 @@ def readdb():
     return df
 
 def main():
-    connection = dbconnect()
-    df = readdb()
+    try:
+        connection = dbconnect()
+        df = readdb()
 
-    print("Connected to PostgreSQL!")
-    # print("TOTAL =", df["count"].sum())
-    # print("PURCHASE =", df.loc[df["event_type"] == "purchase", "count"].iloc[0])
-    plt.title("Pie", fontsize=16, fontweight="bold")
-    plt.pie(df["count"], labels=df["event_type"], autopct="%1.1f%%", startangle=50)
-    # plt.savefig("pie.png")
-    plt.show()
 
-    connection.close()
+        print("Connected to PostgreSQL!")
+        print("TOTAL =", df["count"].sum())
+        print("PURCHASE =", df.loc[df["event_type"] == "purchase", "count"].iloc[0])
+        print("VIEW =", df.loc[df["event_type"] == "view", "count"].iloc[0])
+        print("CART =", df.loc[df["event_type"] == "cart", "count"].iloc[0])
+        print("REMOVE FROM CART =", df.loc[df["event_type"] == "remove_from_cart", "count"].iloc[0])
+        plt.title("Pie", fontsize=16, fontweight="bold")
+        plt.pie(df["count"], labels=df["event_type"], autopct="%1.1f%%", startangle=50)
+        # plt.savefig("pie.png")
+        plt.show()
+
+        connection.close()
+    except:
+        print("You should first create the db,go back to data engineer module and create the db!!")
 
 
 if __name__ == "__main__":

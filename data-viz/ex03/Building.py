@@ -113,9 +113,12 @@ def graph_monetary(df):
     
 
 def main():
-    df = readdb()
-    graph_frequency(df)
-    graph_monetary(df)
+    try:
+        df = readdb()
+        graph_frequency(df)
+        graph_monetary(df)
+    except:
+        print("Please create a bd!!!")
 
     
 

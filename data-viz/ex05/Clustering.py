@@ -126,12 +126,15 @@ def plot_groups(rfm):
     plt.show()
     
 def main():
-    df = readdb()
-    rfm = find_rfm(df)
-    rfm = get_group(rfm)
-    plot_groups(rfm)
+    try:
+        df = readdb()
+        rfm = find_rfm(df)
+        rfm = get_group(rfm)
+        plot_groups(rfm)
 
-    print(rfm.head())
+        print(rfm.head())
+    except:
+        print("please you need a db!!")
     
 if __name__ == "__main__":
     main()
