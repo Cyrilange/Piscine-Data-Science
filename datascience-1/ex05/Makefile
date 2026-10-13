@@ -12,7 +12,7 @@ install: $(VENV)
 	$(PIP) install -r requirements.txt
 
 run: $(VENV)
-	$(PYTHON) prohr.py
+	$(PYTHON) split.py
 
 
 clean:

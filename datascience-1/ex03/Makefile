@@ -12,7 +12,7 @@ install: $(VENV)
 	$(PIP) install -r requirements.txt
 
 run: $(VENV)
-	$(PYTHON) prohr.py
+	$(PYTHON) standardization.py
 
 
 clean:
