@@ -90,8 +90,11 @@ def read_csv_train():
     plt.show()
     
 def main():
-    read_csv_test()
-    read_csv_train()
+    try:
+        read_csv_test()
+        read_csv_train()
+    except:
+        print("csv forgotten")
 
 if __name__ == "__main__":
 	main()
