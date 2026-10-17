@@ -11,7 +11,7 @@ install: $(VENV)
 	$(PIP) install -r requirements.txt
 
 run: $(VENV)
-	$(PYTHON) Confusion_Matrix..py
+	$(PYTHON) Confusion_Matrix..py ../truth.txt ../predictions.txt   
 
 
 clean:

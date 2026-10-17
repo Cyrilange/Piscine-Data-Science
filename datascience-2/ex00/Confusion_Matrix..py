@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
+import sys
 
 def open_and_read():
-    docs_txt = ["../truth.txt", "../predictions.txt"]
+    docs_txt = [sys.argv[1], sys.argv[2]]
     data_for_txt = {}
 
     for name in docs_txt:
@@ -29,17 +30,10 @@ def open_and_read():
         elif reel == "Sith" and predict == "Sith":
             sith_correct += 1
 
-    # print("Jed i correctly reconised :", jedi_correct)
-    # print("Jedi taken for a Sith :", jedi_for_sith)
-    # print("Sith taken for a Jedi :", sith_for_jedi)
-    # print("Sith correctly reconised :", sith_correct)
-
     return [[jedi_correct, jedi_for_sith],
         [sith_for_jedi, sith_correct]]
 
-
-
-        
+  
 def precision(matrix):
     jedi = matrix[0][0] / (matrix[0][0] + matrix[1][0])
     sith = matrix[1][1] / (matrix[0][1] + matrix[1][1])
@@ -87,6 +81,9 @@ def graph_made(matrix):
 
     
 def main():
+    if(len(sys.argv) != 3):
+        print("usage : venv/bin/python Tree.py ../file.txt ../file2.txt")
+        return 1
     matrix = open_and_read()
 
     precisions = precision(matrix)
